@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65132F0A1829BD2000D62BF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65132F091829BD2000D62BF4 /* Foundation.framework */; };
+		65132F0C1829BD2000D62BF4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65132F0B1829BD2000D62BF4 /* CoreGraphics.framework */; };
+		65132F0E1829BD2000D62BF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65132F0D1829BD2000D62BF4 /* UIKit.framework */; };
+		65132F141829BD2000D62BF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65132F121829BD2000D62BF4 /* InfoPlist.strings */; };
+		65132F161829BD2000D62BF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65132F151829BD2000D62BF4 /* main.m */; };
+		65132F1A1829BD2000D62BF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65132F191829BD2000D62BF4 /* AppDelegate.m */; };
+		65132F1D1829BD2000D62BF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65132F1B1829BD2000D62BF4 /* Main.storyboard */; };
+		65132F201829BD2000D62BF4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65132F1F1829BD2000D62BF4 /* ViewController.m */; };
+		65132F221829BD2100D62BF4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65132F211829BD2100D62BF4 /* Images.xcassets */; };
+		65132F291829BD2100D62BF4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65132F281829BD2100D62BF4 /* XCTest.framework */; };
+		65132F2A1829BD2100D62BF4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65132F091829BD2000D62BF4 /* Foundation.framework */; };
+		65132F2B1829BD2100D62BF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65132F0D1829BD2000D62BF4 /* UIKit.framework */; };
+		65132F331829BD2100D62BF4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65132F311829BD2100D62BF4 /* InfoPlist.strings */; };
+		65132F351829BD2100D62BF4 /* dalplexlaperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65132F341829BD2100D62BF4 /* dalplexlaperTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		65132F2C1829BD2100D62BF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65132EFE1829BD2000D62BF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65132F051829BD2000D62BF4;
+			remoteInfo = dalplexlaper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		65132F061829BD2000D62BF4 /* dalplexlaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dalplexlaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65132F091829BD2000D62BF4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		65132F0B1829BD2000D62BF4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		65132F0D1829BD2000D62BF4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		65132F111829BD2000D62BF4 /* dalplexlaper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "dalplexlaper-Info.plist"; sourceTree = "<group>"; };
+		65132F131829BD2000D62BF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		65132F151829BD2000D62BF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		65132F171829BD2000D62BF4 /* dalplexlaper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dalplexlaper-Prefix.pch"; sourceTree = "<group>"; };
+		65132F181829BD2000D62BF4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		65132F191829BD2000D62BF4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		65132F1C1829BD2000D62BF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		65132F1E1829BD2000D62BF4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		65132F1F1829BD2000D62BF4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		65132F211829BD2100D62BF4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		65132F271829BD2100D62BF4 /* dalplexlaperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dalplexlaperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65132F281829BD2100D62BF4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		65132F301829BD2100D62BF4 /* dalplexlaperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "dalplexlaperTests-Info.plist"; sourceTree = "<group>"; };
+		65132F321829BD2100D62BF4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		65132F341829BD2100D62BF4 /* dalplexlaperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dalplexlaperTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		65132F031829BD2000D62BF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65132F0C1829BD2000D62BF4 /* CoreGraphics.framework in Frameworks */,
+				65132F0E1829BD2000D62BF4 /* UIKit.framework in Frameworks */,
+				65132F0A1829BD2000D62BF4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65132F241829BD2100D62BF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65132F291829BD2100D62BF4 /* XCTest.framework in Frameworks */,
+				65132F2B1829BD2100D62BF4 /* UIKit.framework in Frameworks */,
+				65132F2A1829BD2100D62BF4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		65132EFD1829BD2000D62BF4 = {
+			isa = PBXGroup;
+			children = (
+				65132F0F1829BD2000D62BF4 /* dalplexlaper */,
+				65132F2E1829BD2100D62BF4 /* dalplexlaperTests */,
+				65132F081829BD2000D62BF4 /* Frameworks */,
+				65132F071829BD2000D62BF4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		65132F071829BD2000D62BF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65132F061829BD2000D62BF4 /* dalplexlaper.app */,
+				65132F271829BD2100D62BF4 /* dalplexlaperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65132F081829BD2000D62BF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65132F091829BD2000D62BF4 /* Foundation.framework */,
+				65132F0B1829BD2000D62BF4 /* CoreGraphics.framework */,
+				65132F0D1829BD2000D62BF4 /* UIKit.framework */,
+				65132F281829BD2100D62BF4 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		65132F0F1829BD2000D62BF4 /* dalplexlaper */ = {
+			isa = PBXGroup;
+			children = (
+				65132F181829BD2000D62BF4 /* AppDelegate.h */,
+				65132F191829BD2000D62BF4 /* AppDelegate.m */,
+				65132F1B1829BD2000D62BF4 /* Main.storyboard */,
+				65132F1E1829BD2000D62BF4 /* ViewController.h */,
+				65132F1F1829BD2000D62BF4 /* ViewController.m */,
+				65132F211829BD2100D62BF4 /* Images.xcassets */,
+				65132F101829BD2000D62BF4 /* Supporting Files */,
+			);
+			path = dalplexlaper;
+			sourceTree = "<group>";
+		};
+		65132F101829BD2000D62BF4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				65132F111829BD2000D62BF4 /* dalplexlaper-Info.plist */,
+				65132F121829BD2000D62BF4 /* InfoPlist.strings */,
+				65132F151829BD2000D62BF4 /* main.m */,
+				65132F171829BD2000D62BF4 /* dalplexlaper-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		65132F2E1829BD2100D62BF4 /* dalplexlaperTests */ = {
+			isa = PBXGroup;
+			children = (
+				65132F341829BD2100D62BF4 /* dalplexlaperTests.m */,
+				65132F2F1829BD2100D62BF4 /* Supporting Files */,
+			);
+			path = dalplexlaperTests;
+			sourceTree = "<group>";
+		};
+		65132F2F1829BD2100D62BF4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				65132F301829BD2100D62BF4 /* dalplexlaperTests-Info.plist */,
+				65132F311829BD2100D62BF4 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		65132F051829BD2000D62BF4 /* dalplexlaper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65132F381829BD2100D62BF4 /* Build configuration list for PBXNativeTarget "dalplexlaper" */;
+			buildPhases = (
+				65132F021829BD2000D62BF4 /* Sources */,
+				65132F031829BD2000D62BF4 /* Frameworks */,
+				65132F041829BD2000D62BF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = dalplexlaper;
+			productName = dalplexlaper;
+			productReference = 65132F061829BD2000D62BF4 /* dalplexlaper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		65132F261829BD2100D62BF4 /* dalplexlaperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65132F3B1829BD2100D62BF4 /* Build configuration list for PBXNativeTarget "dalplexlaperTests" */;
+			buildPhases = (
+				65132F231829BD2100D62BF4 /* Sources */,
+				65132F241829BD2100D62BF4 /* Frameworks */,
+				65132F251829BD2100D62BF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65132F2D1829BD2100D62BF4 /* PBXTargetDependency */,
+			);
+			name = dalplexlaperTests;
+			productName = dalplexlaperTests;
+			productReference = 65132F271829BD2100D62BF4 /* dalplexlaperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		65132EFE1829BD2000D62BF4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "ship-fit";
+				TargetAttributes = {
+					65132F261829BD2100D62BF4 = {
+						TestTargetID = 65132F051829BD2000D62BF4;
+					};
+				};
+			};
+			buildConfigurationList = 65132F011829BD2000D62BF4 /* Build configuration list for PBXProject "dalplexlaper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 65132EFD1829BD2000D62BF4;
+			productRefGroup = 65132F071829BD2000D62BF4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65132F051829BD2000D62BF4 /* dalplexlaper */,
+				65132F261829BD2100D62BF4 /* dalplexlaperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		65132F041829BD2000D62BF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65132F221829BD2100D62BF4 /* Images.xcassets in Resources */,
+				65132F141829BD2000D62BF4 /* InfoPlist.strings in Resources */,
+				65132F1D1829BD2000D62BF4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65132F251829BD2100D62BF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65132F331829BD2100D62BF4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		65132F021829BD2000D62BF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65132F201829BD2000D62BF4 /* ViewController.m in Sources */,
+				65132F1A1829BD2000D62BF4 /* AppDelegate.m in Sources */,
+				65132F161829BD2000D62BF4 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65132F231829BD2100D62BF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65132F351829BD2100D62BF4 /* dalplexlaperTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		65132F2D1829BD2100D62BF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65132F051829BD2000D62BF4 /* dalplexlaper */;
+			targetProxy = 65132F2C1829BD2100D62BF4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		65132F121829BD2000D62BF4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65132F131829BD2000D62BF4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		65132F1B1829BD2000D62BF4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65132F1C1829BD2000D62BF4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		65132F311829BD2100D62BF4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65132F321829BD2100D62BF4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		65132F361829BD2100D62BF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		65132F371829BD2100D62BF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		65132F391829BD2100D62BF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dalplexlaper/dalplexlaper-Prefix.pch";
+				INFOPLIST_FILE = "dalplexlaper/dalplexlaper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		65132F3A1829BD2100D62BF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dalplexlaper/dalplexlaper-Prefix.pch";
+				INFOPLIST_FILE = "dalplexlaper/dalplexlaper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		65132F3C1829BD2100D62BF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/dalplexlaper.app/dalplexlaper";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dalplexlaper/dalplexlaper-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "dalplexlaperTests/dalplexlaperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		65132F3D1829BD2100D62BF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/dalplexlaper.app/dalplexlaper";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dalplexlaper/dalplexlaper-Prefix.pch";
+				INFOPLIST_FILE = "dalplexlaperTests/dalplexlaperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		65132F011829BD2000D62BF4 /* Build configuration list for PBXProject "dalplexlaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65132F361829BD2100D62BF4 /* Debug */,
+				65132F371829BD2100D62BF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65132F381829BD2100D62BF4 /* Build configuration list for PBXNativeTarget "dalplexlaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65132F391829BD2100D62BF4 /* Debug */,
+				65132F3A1829BD2100D62BF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		65132F3B1829BD2100D62BF4 /* Build configuration list for PBXNativeTarget "dalplexlaperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65132F3C1829BD2100D62BF4 /* Debug */,
+				65132F3D1829BD2100D62BF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 65132EFE1829BD2000D62BF4 /* Project object */;
+}
