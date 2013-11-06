@@ -9,6 +9,10 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *lapsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+- (IBAction)tapAction:(id)sender;
+- (IBAction)longPressAction:(id)sender;
 
 @end
 
@@ -26,4 +30,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)tapAction:(id)sender {
+}
+
+- (IBAction)longPressAction:(id)sender {
+}
 @end
