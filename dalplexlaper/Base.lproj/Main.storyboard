@@ -90,7 +90,7 @@
                 <swipeGestureRecognizer direction="right" id="RcE-mW-rlI">
                     <connections>
                         <action selector="swipeToSettingsAction:" destination="vXZ-lx-hvc" id="4Bi-LA-mkp"/>
-                        <segue destination="xhz-Rk-lLp" kind="modal" id="jai-4W-FXa"/>
+                        <segue destination="xhz-Rk-lLp" kind="modal" identifier="toSettings" id="jai-4W-FXa"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -175,7 +175,7 @@
                 <swipeGestureRecognizer direction="right" id="WYU-Ss-yOC">
                     <connections>
                         <action selector="swipeAction:" destination="xhz-Rk-lLp" id="rjE-fD-UQf"/>
-                        <segue destination="vXZ-lx-hvc" kind="modal" id="T38-Q6-Vp5"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="toTap" id="T38-Q6-Vp5"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

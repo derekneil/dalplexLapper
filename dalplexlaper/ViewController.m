@@ -35,8 +35,10 @@
     NSLog(@"viewDidLoad");
     
     //set base values for locals
-    _laps = 0;
     _lapDistanceKM = 0.26;
+    
+    _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
+    _distanceLabel.text = [NSString stringWithFormat:@"%.2f",_totalDistanceKM];
 }
 
 - (IBAction)tapAction:(id)sender {
@@ -56,6 +58,16 @@
 - (IBAction)swipeAction:(id)sender {
     NSLog(@"swipeAction");
     //go back to main view
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //passing values to a new instance of itself is rediculous!
+    ViewController *destVC = [segue destinationViewController];
+    destVC.laps = _laps;
+    destVC.totalDistanceKM = _totalDistanceKM;
+    destVC.lapDistanceKM = _lapDistanceKM;
+    destVC.announce = _announce;
 }
 
 
