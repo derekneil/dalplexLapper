@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--laptap-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="laptap" title="laptap" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" userLabel="laptap" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UHA-Ue-s8e"/>
                         <viewControllerLayoutGuide type="bottom" id="1Go-29-jow"/>
@@ -97,10 +97,10 @@
                 </pongPressGestureRecognizer>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--settings-->
         <scene sceneID="CaU-aU-HJd">
             <objects>
-                <viewController id="xhz-Rk-lLp" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" title="settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xhz-Rk-lLp" userLabel="settings" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SZL-wH-YnI"/>
                         <viewControllerLayoutGuide type="bottom" id="qwE-sg-34t"/>
@@ -185,7 +185,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1894" y="168"/>
+            <point key="canvasLocation" x="1876" y="168"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

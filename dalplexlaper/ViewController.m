@@ -16,6 +16,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *lapDistance;
 @property (weak, nonatomic) IBOutlet UISwitch *announcePace;
 - (IBAction)swipeAction:(id)sender;
+@property (nonatomic, assign) int laps;
+@property (nonatomic, assign) float lapDistanceKM;
+@property (nonatomic, assign) float totalDistanceKM;
+@property (nonatomic, assign) BOOL announce;
+
+@property (strong, nonatomic) UIView* laptapView;
+@property (strong, nonatomic) UIView* settingsView;
 
 @end
 
@@ -25,29 +32,37 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"viewDidLoad");
     
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    //set base values for locals
+    _laps = 0;
+    _lapDistanceKM = 0.26;
+    
+    //default view already created for me
+    _laptapView = self.view;
+    
+    //create ref to settings view
+    _settingsView = [[NSBundle mainBundle] loadNibNamed:@"settings" owner:self options:nil];
 }
 
 - (IBAction)tapAction:(id)sender {
     NSLog(@"tap action");
+    //increment lap counter
+    _laps++;
+    _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
+    _totalDistanceKM += _lapDistanceKM;
+    _distanceLabel.text = [NSString stringWithFormat:@"%.2f",_totalDistanceKM];
 }
 
 - (IBAction)longPressAction:(id)sender {
     NSLog(@"long press action");
+    //go to settings view
+    self.view = _settingsView;
 }
+
 - (IBAction)swipeAction:(id)sender {
     NSLog(@"swipeAction");
-//    if (sender == UISwipeGestureRecognizerDirectionLeft) {
-//        NSLog(@"Left");
-//    }
-//    if(sender == UISwipeGestureRecognizerDirectionRight) {
-//        NSLog(@"Right");
-//    }
+    //go back to main view
+    self.view = _laptapView;
 }
 @end
