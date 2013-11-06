@@ -60,7 +60,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    NSLog(@"viewDidLoad");
+//    NSLog(@"viewDidLoad");
     
     //load saved player
     _userDefaults = [NSUserDefaults standardUserDefaults];
@@ -88,18 +88,19 @@
 
 - (IBAction)tapAction:(id)sender {
     //increment lap counter
-    _laps++;
+    self.laps++;
     
     _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
-    _totalDistanceKM += _lapDistanceKM;
+    self.totalDistanceKM += _lapDistanceKM;
     _distanceLabel.text = [NSString stringWithFormat:@"%.2f",_totalDistanceKM];
     
     if(_announce){
-        //play accountment
+        //TODO: play accountment
         NSLog(@"play annoucement");
     }
     
-    //reset lap pace timer
+    //TODO: reset lap pace timer
+    
     
     [self doBackgroundColorAnimation];
 }
@@ -108,7 +109,7 @@
 - (void) doBackgroundColorAnimation {
     NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], [UIColor yellowColor], [UIColor orangeColor], nil];
     
-    [UIView animateWithDuration:2.0f animations:^{
+    [UIView animateWithDuration:1.0f animations:^{
         self.view.backgroundColor = [colors objectAtIndex:[self random:0:4]];
     }];
     
@@ -133,7 +134,7 @@
 }
 
 - (IBAction)changeAnnouncePref:(id)sender {
-    self.announcePace.on = [sender isOn];
+    self.announce = [sender isOn];
 }
 
 - (IBAction)resetAction:(id)sender {
