@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eql-LF-dCy">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eql-LF-dCy">
                                 <rect key="frame" x="20" y="180" width="280" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -37,7 +37,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLk-ic-oRX">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLk-ic-oRX">
                                 <rect key="frame" x="20" y="288" width="280" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -92,7 +92,7 @@
                 </tapGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="H0M-Rc-CRX">
                     <connections>
-                        <action selector="longPressAction:" destination="vXZ-lx-hvc" id="Ig3-tY-yNP"/>
+                        <action selector="longPressAction:" destination="vXZ-lx-hvc" id="Ena-Xw-BNd"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
@@ -100,7 +100,7 @@
         <!--View Controller-->
         <scene sceneID="CaU-aU-HJd">
             <objects>
-                <viewController id="xhz-Rk-lLp" sceneMemberID="viewController">
+                <viewController id="xhz-Rk-lLp" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SZL-wH-YnI"/>
                         <viewControllerLayoutGuide type="bottom" id="qwE-sg-34t"/>
@@ -152,6 +152,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="OED-be-ENa" firstAttribute="top" secondItem="8I0-5u-NKU" secondAttribute="bottom" constant="8" symbolic="YES" id="3JD-Mt-diY"/>
                             <constraint firstItem="5gI-aa-jZq" firstAttribute="leading" secondItem="tqc-yV-eZe" secondAttribute="leading" id="IpM-4Z-iRG"/>
@@ -167,11 +168,24 @@
                             <constraint firstItem="5gI-aa-jZq" firstAttribute="top" secondItem="e6A-mg-ciL" secondAttribute="top" constant="225" id="ryH-je-PLo"/>
                             <constraint firstItem="OED-be-ENa" firstAttribute="centerX" secondItem="2yy-na-cqb" secondAttribute="centerX" id="zTe-5H-fUu"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="iMA-KH-o21" appends="YES" id="WcQ-v4-Pa5"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="announcePace" destination="2yy-na-cqb" id="xSt-5D-M6J"/>
+                        <outlet property="lapDistance" destination="5gI-aa-jZq" id="yyD-wK-rye"/>
+                        <outlet property="swipeAction" destination="iMA-KH-o21" id="BbG-yu-hYD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJg-5u-c16" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="iMA-KH-o21">
+                    <connections>
+                        <action selector="swipeAction:" destination="xhz-Rk-lLp" id="5y8-9C-wDp"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="682" y="101"/>
+            <point key="canvasLocation" x="1894" y="168"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
