@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 
+- (int) random:(int)min :(int)max;
+
 @property (weak, nonatomic) IBOutlet UILabel *lapsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 - (IBAction)tapAction:(id)sender;
@@ -48,7 +50,24 @@
     _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
     _totalDistanceKM += _lapDistanceKM;
     _distanceLabel.text = [NSString stringWithFormat:@"%.2f",_totalDistanceKM];
+    
+    [self doBackgroundColorAnimation];
 }
+
+//adapted from http://stackoverflow.com/questions/6241655/uiview-backgroundcolor-color-cycle
+- (void) doBackgroundColorAnimation {
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], [UIColor yellowColor], [UIColor orangeColor], nil];
+    
+    [UIView animateWithDuration:2.0f animations:^{
+        
+        self.view.backgroundColor = [colors objectAtIndex:[self random:0:4]];
+    }];
+    
+}
+- (int) random:(int)min :(int)max {
+    return ( (arc4random() % (max-min+1)) + min );
+}
+
 
 - (IBAction)swipeToSettingsAction:(id)sender {
     NSLog(@"swipe to settings action");

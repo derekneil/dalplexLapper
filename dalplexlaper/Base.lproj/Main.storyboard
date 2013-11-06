@@ -164,6 +164,7 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="WYU-Ss-yOC" appends="YES" id="pXG-sk-Wzc"/>
+                            <outletCollection property="gestureRecognizers" destination="LDH-2X-Qx8" appends="YES" id="vUv-Pq-Wcc"/>
                         </connections>
                     </view>
                     <connections>
@@ -178,6 +179,11 @@
                         <segue destination="vXZ-lx-hvc" kind="modal" identifier="toTap" id="T38-Q6-Vp5"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="LDH-2X-Qx8">
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="modal" id="Z4b-bx-kBo"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="656" y="-176"/>
         </scene>
@@ -187,4 +193,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="T38-Q6-Vp5"/>
+    </inferredMetricsTieBreakers>
 </document>
