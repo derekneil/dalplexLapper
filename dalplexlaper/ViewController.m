@@ -20,15 +20,41 @@
 @property (weak, nonatomic) IBOutlet UITextField *lapDistance;
 @property (weak, nonatomic) IBOutlet UISwitch *announcePace;
 - (IBAction)swipeAction:(id)sender;
+- (IBAction)newLapLength:(id)sender;
+- (IBAction)changeAnnouncePref:(id)sender;
+- (IBAction)resetAction:(id)sender;
 
 @property (nonatomic, assign) int laps;
 @property (nonatomic, assign) float lapDistanceKM;
 @property (nonatomic, assign) float totalDistanceKM;
 @property (nonatomic, assign) BOOL announce;
 
+@property (nonatomic, strong) NSUserDefaults* userDefaults;
+
 @end
 
 @implementation ViewController
+
+-(void)setLaps:(int)laps{
+    _laps = laps;
+    [_userDefaults setInteger:laps forKey:@"laps"];
+    _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
+}
+-(void)setAnnounce:(BOOL)announce{
+    _announce = announce;
+    [_userDefaults setBool:announce forKey:@"announce"];
+    _announcePace.on = _announce;
+}
+-(void)setTotalDistanceKM:(float)totalDistanceKM{
+    _totalDistanceKM = totalDistanceKM;
+    [_userDefaults setFloat:totalDistanceKM forKey:@"totalDistanceKM"];
+    _distanceLabel.text = [NSString stringWithFormat:@"%.2f",_totalDistanceKM];
+}
+-(void)setLapDistanceKM:(float)lapDistanceKM{
+    _lapDistanceKM = lapDistanceKM;
+    [_userDefaults setFloat:lapDistanceKM forKey:@"lapDistanceKM"];
+    _lapDistance.text = [NSString stringWithFormat:@"%d", (int)(_lapDistanceKM*1000) ];
+}
 
 - (void)viewDidLoad
 {
@@ -36,20 +62,44 @@
 	// Do any additional setup after loading the view, typically from a nib.
     NSLog(@"viewDidLoad");
     
-    //set base values for locals
-    _lapDistanceKM = 0.26;
+    //load saved player
+    _userDefaults = [NSUserDefaults standardUserDefaults];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{
+                                                              @"laps": @0,
+                                                              @"totalDistanceKM":@0.0,
+                                                              @"lapDistanceKM":@0.267,
+                                                              @"announce":@1,
+                                                              }];
     
+    // Read save settings
+    _laps = [_userDefaults integerForKey:@"laps"];
+    _totalDistanceKM = [_userDefaults floatForKey:@"totalDistanceKM"];
+    _lapDistanceKM = [_userDefaults floatForKey:@"lapDistanceKM"];
+    _announce = [_userDefaults boolForKey:@"announce"];
+    
+    //setup tap view
     _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
     _distanceLabel.text = [NSString stringWithFormat:@"%.2f",_totalDistanceKM];
+    
+    //setup settings view
+    _lapDistance.text = [NSString stringWithFormat:@"%d", (int)(_lapDistanceKM*1000) ];
+    _announcePace.on = _announce;
 }
 
 - (IBAction)tapAction:(id)sender {
-    NSLog(@"tap action");
     //increment lap counter
     _laps++;
+    
     _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
     _totalDistanceKM += _lapDistanceKM;
     _distanceLabel.text = [NSString stringWithFormat:@"%.2f",_totalDistanceKM];
+    
+    if(_announce){
+        //play accountment
+        NSLog(@"play annoucement");
+    }
+    
+    //reset lap pace timer
     
     [self doBackgroundColorAnimation];
 }
@@ -59,7 +109,6 @@
     NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], [UIColor yellowColor], [UIColor orangeColor], nil];
     
     [UIView animateWithDuration:2.0f animations:^{
-        
         self.view.backgroundColor = [colors objectAtIndex:[self random:0:4]];
     }];
     
@@ -79,14 +128,23 @@
     //go back to main view
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    //passing values to a new instance of itself is rediculous!
-    ViewController *destVC = [segue destinationViewController];
-    destVC.laps = _laps;
-    destVC.totalDistanceKM = _totalDistanceKM;
-    destVC.lapDistanceKM = _lapDistanceKM;
-    destVC.announce = _announce;
+- (IBAction)newLapLength:(id)sender {
+    self.lapDistanceKM = [_lapDistance.text intValue]/1000.0;
+}
+
+- (IBAction)changeAnnouncePref:(id)sender {
+    self.announcePace.on = [sender isOn];
+}
+
+- (IBAction)resetAction:(id)sender {
+    self.laps = 0;
+    self.totalDistanceKM = 0;
+    self.lapDistanceKM = 0.267;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 
