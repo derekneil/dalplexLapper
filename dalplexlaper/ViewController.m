@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 - (IBAction)tapAction:(id)sender;
 - (IBAction)longPressAction:(id)sender;
+- (IBAction)swipeToSettingsAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *lapDistance;
 @property (weak, nonatomic) IBOutlet UISwitch *announcePace;
 - (IBAction)swipeAction:(id)sender;
@@ -39,10 +40,10 @@
     _lapDistanceKM = 0.26;
     
     //default view already created for me
-    _laptapView = self.view;
+//    _laptapView = self.view;
     
     //create ref to settings view
-    _settingsView = [[NSBundle mainBundle] loadNibNamed:@"settings" owner:self options:nil];
+    //_settingsView = [[NSBundle mainBundle] loadNibNamed:@"settings" owner:self options:nil];
 }
 
 - (IBAction)tapAction:(id)sender {
@@ -57,12 +58,18 @@
 - (IBAction)longPressAction:(id)sender {
     NSLog(@"long press action");
     //go to settings view
-    self.view = _settingsView;
+//    self.view = _settingsView;
+}
+
+- (IBAction)swipeToSettingsAction:(id)sender {
+    NSLog(@"swipe to settings action");
+    //go to settings view
+
 }
 
 - (IBAction)swipeAction:(id)sender {
     NSLog(@"swipeAction");
     //go back to main view
-    self.view = _laptapView;
+//    self.view = _laptapView;
 }
 @end

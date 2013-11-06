@@ -73,7 +73,7 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="4id-Ye-glS" appends="YES" id="Jff-Is-TMw"/>
-                            <outletCollection property="gestureRecognizers" destination="H0M-Rc-CRX" appends="YES" id="CdL-R0-61s"/>
+                            <outletCollection property="gestureRecognizers" destination="RcE-mW-rlI" appends="YES" id="NXO-cG-RXV"/>
                         </connections>
                     </view>
                     <connections>
@@ -87,11 +87,12 @@
                         <action selector="tapAction:" destination="vXZ-lx-hvc" id="LbC-j4-vla"/>
                     </connections>
                 </tapGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="H0M-Rc-CRX">
+                <swipeGestureRecognizer direction="right" id="RcE-mW-rlI">
                     <connections>
-                        <action selector="longPressAction:" destination="vXZ-lx-hvc" id="Ena-Xw-BNd"/>
+                        <action selector="swipeToSettingsAction:" destination="vXZ-lx-hvc" id="4Bi-LA-mkp"/>
+                        <segue destination="xhz-Rk-lLp" kind="modal" id="jai-4W-FXa"/>
                     </connections>
-                </pongPressGestureRecognizer>
+                </swipeGestureRecognizer>
             </objects>
         </scene>
         <!--settings-->
@@ -162,23 +163,23 @@
                             <constraint firstItem="OED-be-ENa" firstAttribute="centerX" secondItem="2yy-na-cqb" secondAttribute="centerX" type="default" id="zTe-5H-fUu"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="iMA-KH-o21" appends="YES" id="WcQ-v4-Pa5"/>
+                            <outletCollection property="gestureRecognizers" destination="WYU-Ss-yOC" appends="YES" id="pXG-sk-Wzc"/>
                         </connections>
                     </view>
                     <connections>
                         <outlet property="announcePace" destination="2yy-na-cqb" id="xSt-5D-M6J"/>
                         <outlet property="lapDistance" destination="5gI-aa-jZq" id="yyD-wK-rye"/>
-                        <outlet property="swipeAction" destination="iMA-KH-o21" id="BbG-yu-hYD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJg-5u-c16" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="iMA-KH-o21">
+                <swipeGestureRecognizer direction="right" id="WYU-Ss-yOC">
                     <connections>
-                        <action selector="swipeAction:" destination="xhz-Rk-lLp" id="5y8-9C-wDp"/>
+                        <action selector="swipeAction:" destination="xhz-Rk-lLp" id="rjE-fD-UQf"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" id="T38-Q6-Vp5"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1876" y="168"/>
+            <point key="canvasLocation" x="656" y="-176"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
