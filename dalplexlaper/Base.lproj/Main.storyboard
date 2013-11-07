@@ -59,15 +59,15 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Jcg-ey-xCM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3ar-QS-e6G"/>
-                            <constraint firstItem="Eql-LF-dCy" firstAttribute="leading" secondItem="kLk-ic-oRX" secondAttribute="leading" type="default" id="3cB-Wu-eb3"/>
-                            <constraint firstItem="Eql-LF-dCy" firstAttribute="trailing" secondItem="kLk-ic-oRX" secondAttribute="trailing" type="default" id="9Cd-di-IZV"/>
                             <constraint firstItem="Jcg-ey-xCM" firstAttribute="trailing" secondItem="Eql-LF-dCy" secondAttribute="trailing" type="default" id="COj-uH-beF"/>
                             <constraint firstItem="Eql-LF-dCy" firstAttribute="leading" secondItem="Jcg-ey-xCM" secondAttribute="leading" type="default" id="DSL-uo-6ge"/>
                             <constraint firstItem="Eql-LF-dCy" firstAttribute="top" secondItem="Jcg-ey-xCM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="E0h-kp-Eb0"/>
                             <constraint firstItem="Jcg-ey-xCM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="72" type="default" id="HVe-RO-Y94"/>
+                            <constraint firstItem="kLk-ic-oRX" firstAttribute="leading" secondItem="Eql-LF-dCy" secondAttribute="leading" type="default" id="JaA-cX-k16"/>
                             <constraint firstItem="dbA-Vn-HMV" firstAttribute="trailing" secondItem="kLk-ic-oRX" secondAttribute="trailing" type="default" id="R7b-FJ-TE7"/>
                             <constraint firstItem="kLk-ic-oRX" firstAttribute="leading" secondItem="dbA-Vn-HMV" secondAttribute="leading" type="default" id="Tjb-ht-dod"/>
                             <constraint firstAttribute="trailing" secondItem="Jcg-ey-xCM" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="TrD-Kc-pnN"/>
+                            <constraint firstItem="kLk-ic-oRX" firstAttribute="trailing" secondItem="Eql-LF-dCy" secondAttribute="trailing" type="default" id="Vxp-m8-ech"/>
                             <constraint firstItem="dbA-Vn-HMV" firstAttribute="top" secondItem="kLk-ic-oRX" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="oAZ-Sh-uNH"/>
                             <constraint firstItem="kLk-ic-oRX" firstAttribute="top" secondItem="Eql-LF-dCy" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="qxC-Po-1nG"/>
                         </constraints>

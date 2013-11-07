@@ -26,14 +26,23 @@
 
 @property (nonatomic, assign) int laps;
 @property (nonatomic, assign) float lapDistanceKM;
+@property (nonatomic, assign) int timeStamp;
 @property (nonatomic, assign) float totalDistanceKM;
+@property (nonatomic, strong) AVSpeechSynthesizer* speechSynthesizer;
+@property (nonatomic, strong) AVAudioSession* audioSession;
 @property (nonatomic, assign) BOOL announce;
+@property (nonatomic, assign) BOOL started;
 
 @property (nonatomic, strong) NSUserDefaults* userDefaults;
 
 @end
 
 @implementation ViewController
+
+-(void)setTimeStamp:(int)timeStamp{
+    _timeStamp = timeStamp;
+    [_userDefaults setInteger:timeStamp forKey:@"timeStamp"];
+}
 
 -(void)setLaps:(int)laps{
     _laps = laps;
@@ -68,6 +77,7 @@
                                                               @"laps": @0,
                                                               @"totalDistanceKM":@0.0,
                                                               @"lapDistanceKM":@0.267,
+                                                              @"timeStamp":@0,
                                                               @"announce":@1,
                                                               }];
     
@@ -75,6 +85,7 @@
     _laps = [_userDefaults integerForKey:@"laps"];
     _totalDistanceKM = [_userDefaults floatForKey:@"totalDistanceKM"];
     _lapDistanceKM = [_userDefaults floatForKey:@"lapDistanceKM"];
+    _timeStamp = [_userDefaults integerForKey:@"timeStamp"];
     _announce = [_userDefaults boolForKey:@"announce"];
     
     //setup tap view
@@ -83,24 +94,60 @@
     
     //setup settings view
     _lapDistance.text = [NSString stringWithFormat:@"%d", (int)(_lapDistanceKM*1000) ];
+    
+    //setup audio
+    _speechSynthesizer  = [AVSpeechSynthesizer new];
+    [_speechSynthesizer setDelegate:self];
+    _audioSession = [AVAudioSession sharedInstance];
+    [_audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [_audioSession setActive:YES error:nil];
+    
     _announcePace.on = _announce;
 }
 
 - (IBAction)tapAction:(id)sender {
-    //increment lap counter
-    self.laps++;
     
-    _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
-    self.totalDistanceKM += _lapDistanceKM;
-    _distanceLabel.text = [NSString stringWithFormat:@"%.2f",_totalDistanceKM];
-    
-    if(_announce){
-        //TODO: play accountment
-        NSLog(@"play annoucement");
+    if(_started){
+        //increment lap counter
+        self.laps++;
+        
+        _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
+        self.totalDistanceKM += _lapDistanceKM;
+        _distanceLabel.text = [NSString stringWithFormat:@"%.2f",_totalDistanceKM];
+        
+        if(_announce){
+            
+            //calculate pace
+            int lasttimeStamp = _timeStamp;
+            self.timeStamp = [[NSDate new] timeIntervalSinceReferenceDate];
+            float pace = ((_timeStamp - lasttimeStamp) / 60.0) / (_lapDistanceKM);
+            
+            NSString* announceString;
+            
+            //build announcement
+            if(_laps%4==0){
+                announceString = [NSString stringWithFormat:@"Distance, %.2f kilometers, pace, %.2f", _totalDistanceKM, pace];
+            }
+            else{
+                announceString = [NSString stringWithFormat:@"Pace, %.2f", pace];
+            }
+            
+            //play announcement
+            AVSpeechUtterance* announceUtter = [[AVSpeechUtterance alloc ] initWithString:announceString];
+            [_speechSynthesizer speakUtterance:announceUtter];
+        }
     }
-    
-    //TODO: reset lap pace timer
-    
+    else{
+        
+        //start lap timer
+        _started = TRUE;
+        self.timeStamp = [[NSDate new] timeIntervalSinceReferenceDate];
+        
+        if (_announce){
+            AVSpeechUtterance* startUtterance = [[AVSpeechUtterance alloc ] initWithString:@"Start"];
+            [_speechSynthesizer speakUtterance:startUtterance];
+        }
+    }
     
     [self doBackgroundColorAnimation];
 }
@@ -141,6 +188,7 @@
     self.laps = 0;
     self.totalDistanceKM = 0;
     self.lapDistanceKM = 0.267;
+    self.timeStamp = 0;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
