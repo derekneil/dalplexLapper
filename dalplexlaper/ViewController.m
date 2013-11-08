@@ -10,8 +10,6 @@
 
 @interface ViewController ()
 
-- (int) random:(int)min :(int)max;
-
 @property (weak, nonatomic) IBOutlet UILabel *lapsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 - (IBAction)tapAction:(id)sender;
@@ -127,8 +125,7 @@
             //build announcement
             if(_laps%4==0){
                 announceString = [NSString stringWithFormat:@"Distance, %.2f kilometers, pace, %.2f", _totalDistanceKM, pace];
-            }
-            else{
+            }else{
                 announceString = [NSString stringWithFormat:@"Pace, %.2f", pace];
             }
             
@@ -137,9 +134,8 @@
             [_speechSynthesizer speakUtterance:announceUtter];
         }
     }
-    else{
+    else{ //start lap timer
         
-        //start lap timer
         _started = TRUE;
         self.timeStamp = [[NSDate new] timeIntervalSinceReferenceDate];
         
@@ -152,19 +148,14 @@
     [self doBackgroundColorAnimation];
 }
 
-//adapted from http://stackoverflow.com/questions/6241655/uiview-backgroundcolor-color-cycle
 - (void) doBackgroundColorAnimation {
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], [UIColor yellowColor], [UIColor orangeColor], nil];
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor grayColor], [UIColor greenColor], [UIColor cyanColor], [UIColor yellowColor], [UIColor orangeColor], nil];
     
     [UIView animateWithDuration:1.0f animations:^{
-        self.view.backgroundColor = [colors objectAtIndex:[self random:0:4]];
+        self.view.backgroundColor = [colors objectAtIndex: (_laps % [colors count] )];
     }];
     
 }
-- (int) random:(int)min :(int)max {
-    return ( (arc4random() % (max-min+1)) + min );
-}
-
 
 - (IBAction)swipeToSettingsAction:(id)sender {
     NSLog(@"swipe to settings action");
