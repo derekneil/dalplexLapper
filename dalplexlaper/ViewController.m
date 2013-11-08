@@ -3,18 +3,20 @@
 //  dalplexlaper
 //
 //  Created by Derek Neil on 2013-11-05.
-//  Copyright (c) 2013 ship-fit. All rights reserved.
+//  CopyLeft 2013 DKN Tech.
 //
 
 #import "ViewController.h"
 
 @interface ViewController ()
 
+//first view
 @property (weak, nonatomic) IBOutlet UILabel *lapsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 - (IBAction)tapAction:(id)sender;
 - (IBAction)swipeToSettingsAction:(id)sender;
 
+//second view
 @property (weak, nonatomic) IBOutlet UITextField *lapDistance;
 @property (weak, nonatomic) IBOutlet UISwitch *announcePace;
 - (IBAction)swipeAction:(id)sender;
@@ -22,20 +24,28 @@
 - (IBAction)changeAnnouncePref:(id)sender;
 - (IBAction)resetAction:(id)sender;
 
+//internals
 @property (nonatomic, assign) int laps;
 @property (nonatomic, assign) float lapDistanceKM;
 @property (nonatomic, assign) int timeStamp;
 @property (nonatomic, assign) float totalDistanceKM;
-@property (nonatomic, strong) AVSpeechSynthesizer* speechSynthesizer;
-@property (nonatomic, strong) AVAudioSession* audioSession;
 @property (nonatomic, assign) BOOL announce;
 @property (nonatomic, assign) BOOL started;
 
+//supporting
 @property (nonatomic, strong) NSUserDefaults* userDefaults;
+@property (nonatomic, strong) AVSpeechSynthesizer* speechSynthesizer;
+@property (nonatomic, strong) AVAudioSession* audioSession;
+@property (nonatomic, strong) NSArray *colors;
 
 @end
 
 @implementation ViewController
+
+-(void)setStarted:(BOOL)started{
+    _started = started;
+    [_userDefaults setBool:started forKey:@"started"];
+}
 
 -(void)setTimeStamp:(int)timeStamp{
     _timeStamp = timeStamp;
@@ -77,6 +87,7 @@
                                                               @"lapDistanceKM":@0.267,
                                                               @"timeStamp":@0,
                                                               @"announce":@1,
+                                                              @"started":@1,
                                                               }];
     
     // Read save settings
@@ -85,6 +96,7 @@
     _lapDistanceKM = [_userDefaults floatForKey:@"lapDistanceKM"];
     _timeStamp = [_userDefaults integerForKey:@"timeStamp"];
     _announce = [_userDefaults boolForKey:@"announce"];
+    _started = [_userDefaults boolForKey:@"started"];
     
     //setup tap view
     _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
@@ -101,14 +113,16 @@
     [_audioSession setActive:YES error:nil];
     
     _announcePace.on = _announce;
+    
+    _colors = [NSArray arrayWithObjects:[UIColor grayColor], [UIColor greenColor], [UIColor cyanColor], [UIColor yellowColor], [UIColor orangeColor], nil];
 }
 
 - (IBAction)tapAction:(id)sender {
     
     if(_started){
+        
         //increment lap counter
         self.laps++;
-        
         _lapsLabel.text = [NSString stringWithFormat:@"%d",_laps];
         self.totalDistanceKM += _lapDistanceKM;
         _distanceLabel.text = [NSString stringWithFormat:@"%.2f",_totalDistanceKM];
@@ -122,7 +136,7 @@
             
             NSString* announceString;
             
-            //build announcement
+            //build announcement based on lap
             if(_laps%4==0){
                 announceString = [NSString stringWithFormat:@"Distance, %.2f kilometers, pace, %.2f", _totalDistanceKM, pace];
             }else{
@@ -136,7 +150,7 @@
     }
     else{ //start lap timer
         
-        _started = TRUE;
+        self.started = TRUE;
         self.timeStamp = [[NSDate new] timeIntervalSinceReferenceDate];
         
         if (_announce){
@@ -149,10 +163,10 @@
 }
 
 - (void) doBackgroundColorAnimation {
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor grayColor], [UIColor greenColor], [UIColor cyanColor], [UIColor yellowColor], [UIColor orangeColor], nil];
     
+    //change background colour based on lapnumber
     [UIView animateWithDuration:1.0f animations:^{
-        self.view.backgroundColor = [colors objectAtIndex: (_laps % [colors count] )];
+        self.view.backgroundColor = [_colors objectAtIndex: (_laps % [_colors count] )];
     }];
     
 }
@@ -180,6 +194,7 @@
     self.totalDistanceKM = 0;
     self.lapDistanceKM = 0.267;
     self.timeStamp = 0;
+    self.started = FALSE;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
