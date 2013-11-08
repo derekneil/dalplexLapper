@@ -14,12 +14,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *lapsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 - (IBAction)tapAction:(id)sender;
-- (IBAction)swipeToSettingsAction:(id)sender;
 
 //second view
 @property (weak, nonatomic) IBOutlet UITextField *lapDistance;
 @property (weak, nonatomic) IBOutlet UISwitch *announcePace;
-- (IBAction)swipeAction:(id)sender;
 - (IBAction)newLapLength:(id)sender;
 - (IBAction)changeAnnouncePref:(id)sender;
 - (IBAction)resetAction:(id)sender;
@@ -71,6 +69,10 @@
     _lapDistanceKM = lapDistanceKM;
     [_userDefaults setFloat:lapDistanceKM forKey:@"lapDistanceKM"];
     _lapDistance.text = [NSString stringWithFormat:@"%d", (int)(_lapDistanceKM*1000) ];
+}
+
+-(void) viewDidDisappear:(BOOL)animated{
+    [_userDefaults synchronize];
 }
 
 - (void)viewDidLoad
@@ -169,16 +171,6 @@
         self.view.backgroundColor = [_colors objectAtIndex: (_laps % [_colors count] )];
     }];
     
-}
-
-- (IBAction)swipeToSettingsAction:(id)sender {
-    NSLog(@"swipe to settings action");
-    //go to settings view
-}
-
-- (IBAction)swipeAction:(id)sender {
-    NSLog(@"swipeAction");
-    //go back to main view
 }
 
 - (IBAction)newLapLength:(id)sender {
