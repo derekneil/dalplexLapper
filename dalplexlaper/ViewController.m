@@ -77,6 +77,12 @@
 
 -(void) viewDidDisappear:(BOOL)animated{
     [_userDefaults synchronize];
+    
+    // Turn off remote control event delivery
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    
+    // Resign as first responder
+    [self resignFirstResponder];
 }
 
 - (void)viewDidLoad
@@ -124,7 +130,41 @@
     _mainSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
     _settingsSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
     
+    // Turn on remote control event delivery
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    // Set itself as the first responder
+    [self becomeFirstResponder];
+    
 }
+
+//doesn't work if ipod music player is already playing, only one delegate to clicks possible
+- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent {
+    
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        
+        switch (receivedEvent.subtype) {
+                
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                NSLog(@"remote button push!");
+                //Set timer, to detect two slow clicks
+                //if second click
+                //[tapAction:nil];
+                break;
+                
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                
+                break;
+                
+            case UIEventSubtypeRemoteControlNextTrack:
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
 
 - (IBAction)tapAction:(id)sender {
     
