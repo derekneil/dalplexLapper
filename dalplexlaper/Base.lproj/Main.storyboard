@@ -79,6 +79,7 @@
                     <connections>
                         <outlet property="distanceLabel" destination="kLk-ic-oRX" id="Oml-dn-a9N"/>
                         <outlet property="lapsLabel" destination="Eql-LF-dCy" id="Lip-WS-DIc"/>
+                        <outlet property="mainSwipeGesture" destination="RcE-mW-rlI" id="c1e-08-7xT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -190,12 +191,12 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="WYU-Ss-yOC" appends="YES" id="pXG-sk-Wzc"/>
-                            <outletCollection property="gestureRecognizers" destination="LDH-2X-Qx8" appends="YES" id="vUv-Pq-Wcc"/>
                         </connections>
                     </view>
                     <connections>
                         <outlet property="announcePace" destination="2yy-na-cqb" id="xSt-5D-M6J"/>
                         <outlet property="lapDistance" destination="5gI-aa-jZq" id="yyD-wK-rye"/>
+                        <outlet property="settingsSwipeGesture" destination="WYU-Ss-yOC" id="I8P-2U-dOv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJg-5u-c16" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -204,11 +205,6 @@
                         <segue destination="vXZ-lx-hvc" kind="modal" identifier="toTap" id="T38-Q6-Vp5"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <tapGestureRecognizer id="LDH-2X-Qx8">
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="modal" id="Z4b-bx-kBo"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="652" y="-156"/>
         </scene>
@@ -218,7 +214,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="T38-Q6-Vp5"/>
-    </inferredMetricsTieBreakers>
 </document>

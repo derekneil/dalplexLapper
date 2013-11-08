@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lapsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 - (IBAction)tapAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UISwipeGestureRecognizer *mainSwipeGesture;
 
 //second view
 @property (weak, nonatomic) IBOutlet UITextField *lapDistance;
@@ -21,6 +22,7 @@
 - (IBAction)newLapLength:(id)sender;
 - (IBAction)changeAnnouncePref:(id)sender;
 - (IBAction)resetAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UISwipeGestureRecognizer *settingsSwipeGesture;
 
 //internals
 @property (nonatomic, assign) int laps;
@@ -116,7 +118,13 @@
     
     _announcePace.on = _announce;
     
+    //setup screen colours for lap changes
     _colors = [NSArray arrayWithObjects:[UIColor grayColor], [UIColor greenColor], [UIColor cyanColor], [UIColor yellowColor], [UIColor orangeColor], nil];
+    
+    //setup gesture prefs
+    _mainSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
+    _settingsSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
+    
 }
 
 - (IBAction)tapAction:(id)sender {
