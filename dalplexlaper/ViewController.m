@@ -35,7 +35,9 @@
 //supporting
 @property (nonatomic, strong) NSUserDefaults* userDefaults;
 @property (nonatomic, strong) AVSpeechSynthesizer* speechSynthesizer;
-@property (nonatomic, strong) AVAudioSession* audioSession;
+@property (nonatomic, weak) MPMusicPlayerController* musicPlayer;
+@property (nonatomic, assign) int musicPlaybackState;
+- (void) playUtterance:(NSString*) utterString;
 @property (nonatomic, strong) NSArray *colors;
 
 @end
@@ -75,6 +77,12 @@
 
 -(void) viewDidDisappear:(BOOL)animated{
     [_userDefaults synchronize];
+    
+    // Turn off remote control event delivery
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    
+    // Resign as first responder
+    [self resignFirstResponder];
 }
 
 - (void)viewDidLoad
@@ -112,9 +120,6 @@
     //setup audio
     _speechSynthesizer  = [AVSpeechSynthesizer new];
     [_speechSynthesizer setDelegate:self];
-    _audioSession = [AVAudioSession sharedInstance];
-    [_audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-    [_audioSession setActive:YES error:nil];
     
     _announcePace.on = _announce;
     
@@ -125,7 +130,41 @@
     _mainSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
     _settingsSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
     
+    // Turn on remote control event delivery
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    // Set itself as the first responder
+    [self becomeFirstResponder];
+    
 }
+
+//doesn't work if ipod music player is already playing, only one delegate to clicks possible
+- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent {
+    
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        
+        switch (receivedEvent.subtype) {
+                
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                NSLog(@"remote button push!");
+                //Set timer, to detect two slow clicks
+                //if second click
+                //[tapAction:nil];
+                break;
+                
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                
+                break;
+                
+            case UIEventSubtypeRemoteControlNextTrack:
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
 
 - (IBAction)tapAction:(id)sender {
     
@@ -154,8 +193,7 @@
             }
             
             //play announcement
-            AVSpeechUtterance* announceUtter = [[AVSpeechUtterance alloc ] initWithString:announceString];
-            [_speechSynthesizer speakUtterance:announceUtter];
+            [self playUtterance: announceString];
         }
     }
     else{ //start lap timer
@@ -164,12 +202,34 @@
         self.timeStamp = [[NSDate new] timeIntervalSinceReferenceDate];
         
         if (_announce){
-            AVSpeechUtterance* startUtterance = [[AVSpeechUtterance alloc ] initWithString:@"Start"];
-            [_speechSynthesizer speakUtterance:startUtterance];
+            [self playUtterance: [NSString stringWithFormat:@"Start"]];
         }
     }
     
     [self doBackgroundColorAnimation];
+}
+
+- (void) playUtterance:(NSString*) utterString{
+    
+    //pause any playing music player
+    _musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    if(_musicPlayer){
+        _musicPlaybackState = [_musicPlayer playbackState];
+        [_musicPlayer pause];
+    }
+    
+    AVSpeechUtterance* utterance = [[AVSpeechUtterance alloc ] initWithString:utterString];
+    [_speechSynthesizer speakUtterance:utterance];
+    
+}
+
+- (void) speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance{
+
+    if( _musicPlaybackState == 1){
+        [_musicPlayer play];
+    }
+    
+    _musicPlayer = nil;
 }
 
 - (void) doBackgroundColorAnimation {
