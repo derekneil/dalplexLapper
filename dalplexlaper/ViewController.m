@@ -112,9 +112,6 @@
     //setup audio
     _speechSynthesizer  = [AVSpeechSynthesizer new];
     [_speechSynthesizer setDelegate:self];
-    _audioSession = [AVAudioSession sharedInstance];
-    [_audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-    [_audioSession setActive:YES error:nil];
     
     _announcePace.on = _announce;
     
@@ -154,8 +151,7 @@
             }
             
             //play announcement
-            AVSpeechUtterance* announceUtter = [[AVSpeechUtterance alloc ] initWithString:announceString];
-            [_speechSynthesizer speakUtterance:announceUtter];
+            [self playUtterance: announceString];
         }
     }
     else{ //start lap timer
@@ -164,8 +160,7 @@
         self.timeStamp = [[NSDate new] timeIntervalSinceReferenceDate];
         
         if (_announce){
-            AVSpeechUtterance* startUtterance = [[AVSpeechUtterance alloc ] initWithString:@"Start"];
-            [_speechSynthesizer speakUtterance:startUtterance];
+            [self playUtterance: [NSString stringWithFormat:@"Start"]];
         }
     }
     
