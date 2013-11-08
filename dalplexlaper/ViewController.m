@@ -35,7 +35,9 @@
 //supporting
 @property (nonatomic, strong) NSUserDefaults* userDefaults;
 @property (nonatomic, strong) AVSpeechSynthesizer* speechSynthesizer;
-@property (nonatomic, strong) AVAudioSession* audioSession;
+@property (nonatomic, weak) MPMusicPlayerController* musicPlayer;
+@property (nonatomic, assign) int musicPlaybackState;
+- (void) playUtterance:(NSString*) utterString;
 @property (nonatomic, strong) NSArray *colors;
 
 @end
@@ -165,6 +167,29 @@
     }
     
     [self doBackgroundColorAnimation];
+}
+
+- (void) playUtterance:(NSString*) utterString{
+    
+    //pause any playing music player
+    _musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    if(_musicPlayer){
+        _musicPlaybackState = [_musicPlayer playbackState];
+        [_musicPlayer pause];
+    }
+    
+    AVSpeechUtterance* utterance = [[AVSpeechUtterance alloc ] initWithString:utterString];
+    [_speechSynthesizer speakUtterance:utterance];
+    
+}
+
+- (void) speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance{
+
+    if( _musicPlaybackState == 1){
+        [_musicPlayer play];
+    }
+    
+    _musicPlayer = nil;
 }
 
 - (void) doBackgroundColorAnimation {
