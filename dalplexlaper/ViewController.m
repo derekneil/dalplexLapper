@@ -14,15 +14,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *lapsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 - (IBAction)tapAction:(id)sender;
-- (IBAction)swipeToSettingsAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UISwipeGestureRecognizer *mainSwipeGesture;
 
 //second view
 @property (weak, nonatomic) IBOutlet UITextField *lapDistance;
 @property (weak, nonatomic) IBOutlet UISwitch *announcePace;
-- (IBAction)swipeAction:(id)sender;
 - (IBAction)newLapLength:(id)sender;
 - (IBAction)changeAnnouncePref:(id)sender;
 - (IBAction)resetAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UISwipeGestureRecognizer *settingsSwipeGesture;
 
 //internals
 @property (nonatomic, assign) int laps;
@@ -73,6 +73,10 @@
     _lapDistance.text = [NSString stringWithFormat:@"%d", (int)(_lapDistanceKM*1000) ];
 }
 
+-(void) viewDidDisappear:(BOOL)animated{
+    [_userDefaults synchronize];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -114,7 +118,13 @@
     
     _announcePace.on = _announce;
     
+    //setup screen colours for lap changes
     _colors = [NSArray arrayWithObjects:[UIColor grayColor], [UIColor greenColor], [UIColor cyanColor], [UIColor yellowColor], [UIColor orangeColor], nil];
+    
+    //setup gesture prefs
+    _mainSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
+    _settingsSwipeGesture.direction = UISwipeGestureRecognizerDirectionUp;
+    
 }
 
 - (IBAction)tapAction:(id)sender {
@@ -169,16 +179,6 @@
         self.view.backgroundColor = [_colors objectAtIndex: (_laps % [_colors count] )];
     }];
     
-}
-
-- (IBAction)swipeToSettingsAction:(id)sender {
-    NSLog(@"swipe to settings action");
-    //go to settings view
-}
-
-- (IBAction)swipeAction:(id)sender {
-    NSLog(@"swipeAction");
-    //go back to main view
 }
 
 - (IBAction)newLapLength:(id)sender {
